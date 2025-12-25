@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>LinguaVox | Dark Mode</title>
+    <title>LinguaVox | Fixed Translation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;700&display=swap');
 
         :root {
-            /* Exact Colors from your Reference Image */
-            --bg-body: #161f2e;       /* Deep Dark Blue Background */
-            --bg-card: #222f3e;       /* Lighter Slate Card */
-            --bg-input: #1b2631;      /* Dark Input Background */
-            --accent: #00d2d3;        /* Teal/Cyan Accent */
+            --bg-body: #161f2e;
+            --bg-card: #222f3e;
+            --bg-input: #1b2631;
+            --accent: #00d2d3;
             --accent-hover: #01a3a4;
             --text-white: #ffffff;
             --text-gray: #a4b0be;
@@ -43,15 +42,14 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.3);
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 20px;
         }
 
-        /* --- HEADER (Big Name) --- */
-        header { text-align: center; margin-bottom: 10px; }
+        header { text-align: center; margin-bottom: 5px; }
         
         h1 {
             margin: 0;
-            font-size: 3.5rem; /* VERY BIG as requested */
+            font-size: 3.5rem;
             font-weight: 800;
             color: var(--text-white);
             letter-spacing: -1px;
@@ -67,20 +65,15 @@
             margin-top: 8px;
         }
 
-        /* --- LABELS --- */
         label {
-            display: block;
             color: var(--text-gray);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
-            margin-bottom: 8px;
-            display: flex; 
-            justify-content: space-between;
+            margin-bottom: 5px;
+            display: block;
         }
 
-        .label-hint { font-size: 0.75rem; opacity: 0.6; font-weight: 400; }
-
-        /* --- INPUT TEXTAREA --- */
+        /* --- INPUTS --- */
         .input-wrapper { position: relative; }
         
         textarea {
@@ -91,142 +84,88 @@
             border-radius: 12px;
             color: var(--text-white);
             padding: 15px;
-            padding-right: 40px; /* Space for mic */
+            padding-right: 40px;
             font-family: inherit;
             font-size: 1.1rem;
             resize: none;
             outline: none;
         }
         textarea:focus { border-color: var(--accent); }
-        textarea::placeholder { color: #576574; font-weight: 500; }
 
         .mic-icon {
             position: absolute;
             bottom: 15px; right: 15px;
             color: var(--text-gray);
             cursor: pointer;
-            background: rgba(255,255,255,0.05);
             width: 30px; height: 30px;
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
+            background: rgba(255,255,255,0.05);
         }
-        .mic-icon:hover { color: var(--accent); background: rgba(0, 210, 211, 0.1); }
+        .mic-icon:hover { color: var(--accent); }
         .mic-icon.active { color: #ff6b6b; animation: pulse 1s infinite; }
 
-        /* --- CONTROLS ROW (Lang + Speed) --- */
-        .controls-row {
+        /* --- LANGUAGE ROW --- */
+        .lang-row {
             display: flex;
-            align-items: flex-end;
-            gap: 20px;
+            gap: 10px;
+            align-items: center;
         }
 
-        .lang-group { flex: 2; }
-        .speed-group { flex: 1; display: flex; flex-direction: column; align-items: flex-end; }
+        .lang-group { flex: 1; }
 
         select {
             width: 100%;
             background-color: var(--bg-input);
             color: var(--text-white);
-            padding: 12px 15px;
+            padding: 12px;
             border: none;
             border-radius: 8px;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 600;
-            cursor: pointer;
             outline: none;
-            /* Custom Arrow */
-            appearance: none;
-            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23a4b0be%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
-            background-repeat: no-repeat;
-            background-position: right 15px top 50%;
-            background-size: 10px auto;
+            cursor: pointer;
         }
 
-        /* Speed Slider Styling */
-        input[type=range] {
-            width: 100px;
-            height: 6px;
-            -webkit-appearance: none;
-            background: #576574;
-            border-radius: 5px;
-            outline: none;
+        .swap-btn {
+            background: none;
+            border: none;
+            color: var(--accent);
             cursor: pointer;
+            margin-top: 20px;
+            font-size: 1.1rem;
         }
-        input[type=range]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 16px; height: 16px;
-            border-radius: 50%;
-            background: var(--accent);
-            cursor: pointer;
-            box-shadow: 0 0 10px rgba(0, 210, 211, 0.5);
-        }
+        .swap-btn:hover { transform: rotate(180deg); }
 
         /* --- BUTTONS --- */
-        .btn-group { display: flex; gap: 15px; margin-top: 10px; }
-
         .btn-translate {
-            flex: 2;
+            width: 100%;
             background-color: var(--accent);
             color: #fff;
             border: none;
             padding: 16px;
-            border-radius: 50px; /* Pill shape */
+            border-radius: 50px;
             font-size: 1.1rem;
             font-weight: 700;
             cursor: pointer;
             box-shadow: 0 5px 15px rgba(0, 210, 211, 0.2);
+            margin-top: 10px;
         }
         .btn-translate:hover { background-color: var(--accent-hover); transform: translateY(-2px); }
 
-        .btn-share {
-            flex: 1;
-            background-color: var(--bg-input);
-            color: var(--text-white);
-            border: 1px solid transparent;
-            padding: 16px;
-            border-radius: 12px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex; align-items: center; justify-content: center; gap: 8px;
-        }
-        .btn-share:hover { background-color: #2c3e50; }
-
-        /* --- HISTORY --- */
-        .history-section {
-            margin-top: 10px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding-top: 20px;
-        }
-        
-        .history-item {
-            background-color: var(--bg-input);
-            padding: 15px;
-            border-radius: 8px;
-            font-size: 1rem;
-            color: var(--text-gray);
-            margin-bottom: 10px;
-            cursor: pointer;
-        }
-        .history-item:hover { color: var(--text-white); border-left: 3px solid var(--accent); }
-
-        /* Output Box (Hidden until used) */
+        /* --- OUTPUT --- */
         .output-box {
             background: rgba(0, 210, 211, 0.1);
             color: var(--accent);
             padding: 15px;
             border-radius: 12px;
-            margin-bottom: 20px;
             font-size: 1.1rem;
             font-weight: 500;
             display: none;
             border: 1px solid rgba(0, 210, 211, 0.2);
+            margin-top: 15px;
         }
 
-        @media (max-width: 480px) {
-            h1 { font-size: 2.5rem; }
-            .container { padding: 25px 20px; }
-        }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
     </style>
 </head>
@@ -239,139 +178,123 @@
         </header>
 
         <div>
-            <label>Input Text <span class="label-hint">(or use Mic on Chrome/Android)</span></label>
-            <div class="input-wrapper">
+            <div class="lang-row">
+                <div class="lang-group">
+                    <label>From (Source)</label>
+                    <select id="source-lang">
+                        <option value="en-US">🇺🇸 English</option>
+                        <option value="hi-IN">🇮🇳 Hindi</option>
+                        <option value="mr-IN">🇮🇳 Marathi</option>
+                        <option value="ja-JP">🇯🇵 Japanese</option>
+                        <option value="es-ES">🇪🇸 Spanish</option>
+                        <option value="fr-FR">🇫🇷 French</option>
+                    </select>
+                </div>
+                <button class="swap-btn" id="swap-btn"><i class="fas fa-exchange-alt"></i></button>
+                <div class="lang-group">
+                    <label>To (Target)</label>
+                    <select id="target-lang">
+                        <option value="hi-IN">🇮🇳 Hindi</option>
+                        <option value="en-US">🇺🇸 English</option>
+                        <option value="mr-IN">🇮🇳 Marathi</option>
+                        <option value="ja-JP">🇯🇵 Japanese</option>
+                        <option value="es-ES">🇪🇸 Spanish</option>
+                        <option value="fr-FR">🇫🇷 French</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="input-wrapper" style="margin-top: 15px;">
                 <textarea id="input-text" placeholder="Type here..."></textarea>
                 <div class="mic-icon" id="mic-btn"><i class="fas fa-microphone"></i></div>
             </div>
         </div>
 
-        <div class="controls-row">
-            <div class="lang-group">
-                <label>Target Language</label>
-                <select id="target-lang">
-                    <option value="mr-IN">🇮🇳 Marathi</option>
-                    <option value="hi-IN">🇮🇳 Hindi</option>
-                    <option value="en-US">🇺🇸 English</option>
-                    <option value="ja-JP">🇯🇵 Japanese</option>
-                    <option value="es-ES">🇪🇸 Spanish</option>
-                    <option value="fr-FR">🇫🇷 French</option>
-                    <option value="de-DE">🇩🇪 German</option>
-                    <option value="zh-CN">🇨🇳 Chinese</option>
-                </select>
-            </div>
-            
-            <div class="speed-group">
-                <label style="width:100%; justify-content:flex-end; gap:10px;">Speed</label>
-                <input type="range" id="speed-slider" min="0.5" max="1.5" step="0.1" value="1">
-            </div>
-        </div>
+        <button class="btn-translate" id="translate-btn">Translate</button>
 
         <div id="output-box" class="output-box"></div>
-
-        <div class="btn-group">
-            <button class="btn-translate" id="translate-btn">Translate & Speak</button>
-            <button class="btn-share" id="share-btn"><i class="fas fa-rocket"></i> Share</button>
-        </div>
-
-        <div class="history-section">
-            <label>Recent History</label>
-            <div id="history-list">
-                </div>
-        </div>
     </div>
 
     <script>
         const inputText = document.getElementById('input-text');
         const outputBox = document.getElementById('output-box');
+        const sourceLang = document.getElementById('source-lang');
         const targetLang = document.getElementById('target-lang');
         const translateBtn = document.getElementById('translate-btn');
-        const speedSlider = document.getElementById('speed-slider');
-        const historyList = document.getElementById('history-list');
+        const swapBtn = document.getElementById('swap-btn');
         const micBtn = document.getElementById('mic-btn');
 
-        // --- TRANSLATE LOGIC ---
+        // Swap Languages
+        swapBtn.addEventListener('click', () => {
+            const temp = sourceLang.value;
+            sourceLang.value = targetLang.value;
+            targetLang.value = temp;
+            
+            if(outputBox.innerText) {
+                inputText.value = outputBox.innerText;
+                outputBox.innerText = "";
+                outputBox.style.display = 'none';
+            }
+        });
+
+        // Translate Logic
         translateBtn.addEventListener('click', async () => {
             const text = inputText.value.trim();
             if(!text) return;
 
-            translateBtn.innerText = "Processing...";
+            translateBtn.innerText = "Translating...";
             
+            // Get simplified language codes (e.g., 'en', 'hi')
+            const src = sourceLang.value.split('-')[0];
+            const tgt = targetLang.value.split('-')[0];
+
             try {
-                // Using Free API
-                const lang = targetLang.value.split('-')[0];
-                const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|${lang}`);
+                // Corrected API Logic: Uses SOURCE | TARGET pair
+                const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${src}|${tgt}`);
                 const data = await res.json();
                 
-                // Decode HTML Entities
                 const raw = data.responseData.translatedText;
+                // Decode HTML entities (e.g., &#39; -> ')
                 const doc = new DOMParser().parseFromString(raw, "text/html");
                 const translated = doc.documentElement.textContent;
 
-                // Show Output
                 outputBox.style.display = 'block';
                 outputBox.innerText = translated;
 
-                // Speak & Save
-                speak(translated);
-                addToHistory(translated);
+                // Auto-speak result
+                speak(translated, targetLang.value);
 
             } catch (e) {
                 outputBox.style.display = 'block';
-                outputBox.innerText = "Error connecting to service.";
+                outputBox.innerText = "Translation Error (Check Connection)";
             }
 
-            translateBtn.innerText = "Translate & Speak";
+            translateBtn.innerText = "Translate";
         });
 
-        // --- SPEECH LOGIC ---
-        function speak(text) {
+        function speak(text, lang) {
             window.speechSynthesis.cancel();
             const utter = new SpeechSynthesisUtterance(text);
-            utter.lang = targetLang.value;
-            utter.rate = speedSlider.value;
-            
-            // Voice matching
-            const voices = window.speechSynthesis.getVoices();
-            const voice = voices.find(v => v.lang === targetLang.value);
-            if(voice) utter.voice = voice;
-
+            utter.lang = lang;
             window.speechSynthesis.speak(utter);
         }
 
-        // --- HISTORY LOGIC ---
-        function addToHistory(text) {
-            const div = document.createElement('div');
-            div.className = 'history-item';
-            div.innerText = text;
-            div.onclick = () => { speak(text); };
-            historyList.prepend(div);
-            if(historyList.children.length > 3) historyList.lastChild.remove();
-        }
-
-        // --- MIC LOGIC ---
+        // Mic Logic
         if('webkitSpeechRecognition' in window) {
             const recognition = new webkitSpeechRecognition();
             recognition.continuous = false;
+            
             micBtn.addEventListener('click', () => {
+                recognition.lang = sourceLang.value; // Listen in Source Language
                 if(micBtn.classList.contains('active')) recognition.stop();
                 else recognition.start();
             });
+
             recognition.onstart = () => micBtn.classList.add('active');
             recognition.onend = () => micBtn.classList.remove('active');
             recognition.onresult = (e) => inputText.value = e.results[0][0].transcript;
         }
 
-        // --- SHARE LOGIC ---
-        document.getElementById('share-btn').addEventListener('click', () => {
-            if(navigator.share && outputBox.innerText) {
-                navigator.share({ title: 'LinguaVox', text: outputBox.innerText });
-            } else {
-                alert('Share not supported or no text to share.');
-            }
-        });
-
-        // Load Voices
         window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
     </script>
 </body>
